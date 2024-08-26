@@ -8,6 +8,16 @@ namespace Traning_exes_console
 {
     internal class Helper
     {
+        public static string[] vietnameseWeekdays = new string[]
+            {
+            "Chủ Nhật", // Sunday
+            "Thứ Hai",  // Monday
+            "Thứ Ba",   // Tuesday
+            "Thứ Tư",   // Wednesday
+            "Thứ Năm",  // Thursday
+            "Thứ Sáu",  // Friday
+            "Thứ Bảy"   // Saturday
+            };
         public static string inputStr()
         {
             Console.WriteLine("Input một chuỗi: ");
@@ -44,6 +54,40 @@ namespace Traning_exes_console
             {
                 return inputInt();
             }
+        }
+
+        public static DateTime inputDateTime()
+        {
+            Console.WriteLine("Input date time dd/MM/yyyy: ");
+            string str = Console.ReadLine();
+            bool isParse = DateTime.TryParse(str, out DateTime dt);
+            if (isParse)
+            {
+                return dt;
+            }
+            return inputDateTime();
+
+        }
+
+        public static string ConvertToVietnameseDate(DateTime date)
+        {
+            
+
+            // Get the day of the week in Vietnamese
+            string vietnameseDayOfWeek = vietnameseWeekdays[(int)date.DayOfWeek];
+
+            // Format the date as "DayOfWeek, Day Month Year"
+            string formattedDate = $"{vietnameseDayOfWeek}, ngày {date.Day} tháng {date.Month} năm {date.Year}";
+
+            return formattedDate;
+        }
+
+        public static dynamic input2Datetime()
+        {
+            Console.WriteLine("input 2 ngày khác nhau");
+            DateTime input1 = inputDateTime();
+            DateTime input2 = inputDateTime();
+            return new { input1, input2};
         }
     }
 }

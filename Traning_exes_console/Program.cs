@@ -30,6 +30,11 @@ namespace Traning_exes_console
                         int intOption = Helper.inputInt();
                         _Int.HandleCase(intOption);
                         break;
+                    case 3:
+                        _Datetime.Menu();
+                        int dtOption = Helper.inputInt();
+                        _Datetime.HandleCase(dtOption);
+                        break;
                 }
             }
 
