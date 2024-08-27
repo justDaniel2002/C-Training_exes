@@ -143,18 +143,23 @@ namespace Traning_exes_console.Collection
 
         public static List<int> getFibo(int x, List<int>? fiboList=null)
         {
-            if (x == 0) return fiboList;
+            int loop = 10;
 
-            if (fiboList == null) fiboList = new List<int>();
-
-            if (fiboList.Count == 0 || fiboList.Count == 1) fiboList.Add(1);
-
-            else if (fiboList.Count >= 2)
+            while (loop != 0)
             {
-                fiboList.Add(fiboList[fiboList.Count - 1] + fiboList[fiboList.Count - 2]);
+                if (fiboList == null) fiboList = new List<int>();
+
+                if (fiboList.Count == 0 || fiboList.Count == 1) fiboList.Add(x);
+
+                else if (fiboList.Count >= 2)
+                {
+                    fiboList.Add(fiboList[fiboList.Count - 1] + fiboList[fiboList.Count - 2]);
+                }
+
+                loop--;
             }
 
-            return getFibo(x-1, fiboList);
+            return fiboList;
         }
     }
 }

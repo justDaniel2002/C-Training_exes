@@ -41,9 +41,9 @@ namespace Traning_exes_console
             return new { input1, input2 };
         }
 
-        public static int inputInt()
+        public static int inputInt(string content = "Input một số: ")
         {
-            Console.WriteLine("Input một số: ");
+            Console.WriteLine(content);
             string str = Console.ReadLine();
             try
             {
