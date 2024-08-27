@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Traning_exes_console
@@ -52,7 +53,7 @@ namespace Traning_exes_console
             }
             catch (Exception ex)
             {
-                return inputInt();
+                return inputInt(content);
             }
         }
 
@@ -112,13 +113,22 @@ namespace Traning_exes_console
             return dictionary;
         }
 
-        public static bool inputYN()
+        public static bool inputYN(string content = "Bạn có muốn tiếp tục không ?Y/N: ")
         {
-            Console.Write("Bạn có muốn tiếp tục không ?Y/N: ");
+            Console.Write(content);
             string input = Console.ReadLine();
             if (input.ToLower() == "n") return false;
             else if (input.ToLower() == "y") return true;
-            else return inputYN();
+            else return inputYN(content);
+        }
+
+        public static bool IsValidNumericString(string input)
+        {
+            // Regular expression pattern
+            string pattern = @"^(\d+ )*\d+$";
+
+            // Check if the input matches the pattern
+            return Regex.IsMatch(input, pattern);
         }
     }
 }
