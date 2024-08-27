@@ -18,9 +18,9 @@ namespace Traning_exes_console
             "Thứ Sáu",  // Friday
             "Thứ Bảy"   // Saturday
             };
-        public static string inputStr()
+        public static string inputStr(string content= "Input một chuỗi: ")
         {
-            Console.WriteLine("Input một chuỗi: ");
+            Console.WriteLine(content);
             string str = Console.ReadLine();
             return str;
         }
@@ -58,7 +58,7 @@ namespace Traning_exes_console
 
         public static DateTime inputDateTime()
         {
-            Console.WriteLine("Input date time dd/MM/yyyy: ");
+            Console.WriteLine("Input date time MM/dd/yyyy: ");
             string str = Console.ReadLine();
             bool isParse = DateTime.TryParse(str, out DateTime dt);
             if (isParse)
@@ -88,6 +88,37 @@ namespace Traning_exes_console
             DateTime input1 = inputDateTime();
             DateTime input2 = inputDateTime();
             return new { input1, input2};
+        }
+
+        public static Dictionary<string, string> inputDictionary(Dictionary<string, string>? dictionary)
+        {
+            string key = inputStr("Nhập vào key");
+            string value = inputStr("Nhập vào value");
+            if(dictionary==null) dictionary = new Dictionary<string, string>();
+            dictionary.Add(key, value);
+
+            return dictionary;
+        }
+
+        public static Dictionary<string, string> inputDictionaries()
+        {
+            var dictionary = new Dictionary<string, string>();
+            do
+            {
+                inputDictionary(dictionary);
+            }
+            while (inputYN());
+
+            return dictionary;
+        }
+
+        public static bool inputYN()
+        {
+            Console.Write("Bạn có muốn tiếp tục không ?Y/N: ");
+            string input = Console.ReadLine();
+            if (input.ToLower() == "n") return false;
+            else if (input.ToLower() == "y") return true;
+            else return inputYN();
         }
     }
 }

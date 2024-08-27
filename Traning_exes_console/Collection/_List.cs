@@ -11,11 +11,11 @@ namespace Traning_exes_console.Collection
         public static void Menu()
         {
             Console.WriteLine("1.danh sách 10 số bất kỳ" +
-                "\n2.danh sách 10 số bất kỳ" +
-                "\n3.danh sách 10 số bất kỳ,Sắp xếp danh sách theo thứ tự tăng dần" +
-                "\n4.danh sách 10 số bất kỳ, Đảo ngược vị trí các số trong danh sách" +
-                "\n5.danh sách 10 số bất kỳ, Bỏ đi các số nhỏ hơn X khỏi danh sách" +
-                "\n6.danh sách 10 số bất kỳ, Bỏ đi các số chia hết cho X khỏi danh sách" +
+                "\n2.danh sách 10 số bất kỳ, Sắp xếp danh sách theo thứ tự tăng dần" +
+                "\n3.danh sách 10 số bất kỳ, Đảo ngược vị trí các số trong danh sách" +
+                "\n4.danh sách 10 số bất kỳ, Bỏ đi các số nhỏ hơn X khỏi danh sách" +
+                "\n5.danh sách 10 số bất kỳ, Bỏ đi các số chia hết cho X khỏi danh sách" +
+                "\n6.danh sách 10 số bất kỳ, Với mỗi số trong danh sách, nếu nhỏ hơn X thì cộng với X" +
                 "\n7.danh sách 10 số bất kỳ và 1 số lớn hơn 0, In X số cuối ra màn hình" +
                 "\n8.danh sách 10 số bất kỳ và 1 số lớn hơn 0 (X)\r\nIn X số cuối ra màn hình theo chiều ngược lại\r" +
                 "\n9.Input: 1 số lớn hơn 0 (X)\r\nTính dãy Fibonaci của số nhập vào\r\nIn 10 giá trị kết quả ra màn hình\r\n");
@@ -50,6 +50,10 @@ namespace Traning_exes_console.Collection
                 case 8:
                     method8(AddNumberList(), Helper.inputInt());
                     break;
+                case 9:
+                    printList(getFibo(Helper.inputInt()));
+                    break;
+
             }
         }
 
@@ -66,7 +70,9 @@ namespace Traning_exes_console.Collection
 
         public static void printList(List<int> list)
         {
-            Console.WriteLine(list.ToString());
+            Console.WriteLine("Danh sách: ");
+           foreach(int i in list) Console.Write(i+" ");
+           Console.WriteLine();
         }
 
         public static List<int> orderAsc(List<int> list)
@@ -111,12 +117,10 @@ namespace Traning_exes_console.Collection
                 return;
             }
             for (int i = list.Count-x; i < list.Count; i++)
-            {
-                if (list[i] < x)
-                {
-                    Console.WriteLine(list[i]);
-                }
+            {                
+                    Console.Write(list[i]+" ");                
             }
+            Console.WriteLine();
 
         }
 
@@ -131,11 +135,9 @@ namespace Traning_exes_console.Collection
             list.Reverse();
             for (int i = 0; i < x; i++)
             {
-                if (list[i] < x)
-                {
-                    Console.WriteLine(list[i]);
-                }
+                Console.Write(list[i] + " ");
             }
+            Console.WriteLine();
 
         }
 
@@ -152,7 +154,7 @@ namespace Traning_exes_console.Collection
                 fiboList.Add(fiboList[fiboList.Count - 1] + fiboList[fiboList.Count - 2]);
             }
 
-            return getFibo(x--, fiboList);
+            return getFibo(x-1, fiboList);
         }
     }
 }

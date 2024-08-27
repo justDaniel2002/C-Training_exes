@@ -1,5 +1,6 @@
 ﻿
 using System.Text;
+using Traning_exes_console.Collection;
 using Traning_exes_console.PrimitiveTypes;
 
 
@@ -15,8 +16,10 @@ namespace Traning_exes_console
             {
                 Console.WriteLine("1. String\n" +
                     "2. Int\n" +
-                    "3. Datetime");
-                Console.WriteLine("option (1 - 3)");
+                    "3. Datetime\n" +
+                    "4. List\n" +
+                    "5. Dictionary");
+                Console.WriteLine("option (1 - 5)");
                 int option = Helper.inputInt();
                 switch(option)
                 {
@@ -34,6 +37,16 @@ namespace Traning_exes_console
                         _Datetime.Menu();
                         int dtOption = Helper.inputInt();
                         _Datetime.HandleCase(dtOption);
+                        break;
+                    case 4:
+                        _List.Menu();
+                        int listOption = Helper.inputInt();
+                        _List.HandleCase(listOption);
+                        break;
+                    case 5:
+                        _Dictionary.Menu();
+                        int dictOption = Helper.inputInt();
+                        _Dictionary.HandleCase(dictOption);
                         break;
                 }
             }
