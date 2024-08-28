@@ -2,6 +2,7 @@
 using System.Text;
 using Traning_exes_console.Collection;
 using Traning_exes_console.File;
+using Traning_exes_console.LinQ;
 using Traning_exes_console.Object;
 using Traning_exes_console.PrimitiveTypes;
 
@@ -22,8 +23,9 @@ namespace Traning_exes_console
                     "4. List\n" +
                     "5. Dictionary\n" +
                     "6. Object\n" +
-                    "7. File");
-                Console.WriteLine("option (1 - 7)");
+                    "7. File\n" +
+                    "8. LinQ");
+                Console.WriteLine("option (1 - 8)");
                 int option = Helper.inputInt();
                 switch(option)
                 {
@@ -63,6 +65,13 @@ namespace Traning_exes_console
                         int fOption = Helper.inputInt();
                         FileHandle.HandleCase(fOption);
                         break;
+                    case 8:
+                        _LinQ.Menu();
+                        int linQOption = Helper.inputInt();
+                        _LinQ.HandleCase(linQOption);
+                        break;
+
+
                 }
             }
 
