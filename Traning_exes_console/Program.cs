@@ -1,6 +1,7 @@
 ﻿
 using System.Text;
 using Traning_exes_console.Collection;
+using Traning_exes_console.Condition;
 using Traning_exes_console.File;
 using Traning_exes_console.LinQ;
 using Traning_exes_console.Object;
@@ -24,8 +25,9 @@ namespace Traning_exes_console
                     "5. Dictionary\n" +
                     "6. Object\n" +
                     "7. File\n" +
-                    "8. LinQ");
-                Console.WriteLine("option (1 - 8)");
+                    "8. LinQ\n" +
+                    "9. Condition");
+                Console.WriteLine("option (1 - 9)");
                 int option = Helper.inputInt();
                 switch(option)
                 {
@@ -69,6 +71,11 @@ namespace Traning_exes_console
                         _LinQ.Menu();
                         int linQOption = Helper.inputInt();
                         _LinQ.HandleCase(linQOption);
+                        break;
+                    case 9:
+                        _Condition.Menu();
+                        int conption = Helper.inputInt();
+                        _Condition.HandleCase(conption);
                         break;
 
 

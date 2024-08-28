@@ -130,5 +130,25 @@ namespace Traning_exes_console
             // Check if the input matches the pattern
             return Regex.IsMatch(input, pattern);
         }
+
+        static bool IsDayInMonth(DateTime date, int day)
+        {
+            // Get the number of days in the month
+            int daysInMonth = DateTime.DaysInMonth(date.Year, date.Month);
+
+            // Check if the input day is within the valid range
+            return day >= 1 && day <= daysInMonth;
+        }
+
+        public static int InputDayInNextMonth(DateTime nextMonth)
+        {
+            int day = inputInt("Nhập vào 1 ngày trong tháng tiếp");
+            if (!IsDayInMonth(nextMonth, day))
+            {
+                Console.WriteLine($"Tháng tiếp không có ngày {day}");
+                return InputDayInNextMonth(nextMonth);
+            }
+            return day;
+        }
     }
 }
