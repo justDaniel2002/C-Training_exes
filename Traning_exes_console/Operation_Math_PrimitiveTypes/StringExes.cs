@@ -15,7 +15,7 @@ namespace Traning_exes_console.PrimitiveTypes
         ///Nếu chuỗi không có ký tự nào -> Thông báo: Chuỗi rỗng
         ///Nếu chuỗi toàn ký tự space -> Thông báo: Chuỗi Space
         /// </summary>
-        public static bool BaseMethod(string str, Func<string, string>? Method = null)
+        public static bool BaseMethod(string str)
         {
             if (str == null)
             {
@@ -32,10 +32,7 @@ namespace Traning_exes_console.PrimitiveTypes
                 Console.WriteLine("Chuỗi space");
                 return false;
             }
-            else if (Method != null)
-            {
-                Method(str);
-            }
+          
             return true;
         }
         /// <summary>
@@ -43,7 +40,8 @@ namespace Traning_exes_console.PrimitiveTypes
         /// </summary>
         public static string Method1(string str)
         {
-            Console.WriteLine(str);
+            if(BaseMethod(str)) Console.WriteLine(str);
+
             return str;
         }
 
@@ -53,7 +51,7 @@ namespace Traning_exes_console.PrimitiveTypes
         public static string Method2(string str)
         {
 
-            Console.WriteLine(str.Trim());
+            if (BaseMethod(str)) Console.WriteLine(str.Trim());
             return str;
 
         }
@@ -64,7 +62,7 @@ namespace Traning_exes_console.PrimitiveTypes
         public static string Method3(string str)
         {
 
-            Console.WriteLine(Regex.Replace(str, spaceRegex, ""));
+            if (BaseMethod(str))  Console.WriteLine(Regex.Replace(str, spaceRegex, ""));
             return str;
 
         }
@@ -74,20 +72,24 @@ namespace Traning_exes_console.PrimitiveTypes
         /// </summary>
         public static string Method4(string str)
         {
-
-            string[] words = Regex.Split(str, spaceRegex);
-            for (int i = 0; i < words.Length; i++)
-            {
-                words[i] = Regex.Replace(words[i], @"\b\w", match => match.Value.ToUpper());
-            }
-
             string finalStr = "";
-            foreach (string word in words)
+            if (BaseMethod(str))
             {
-                finalStr += word + " ";
-            }
+                string[] words = Regex.Split(str, spaceRegex);
+                for (int i = 0; i < words.Length; i++)
+                {
+                    words[i] = Regex.Replace(words[i], @"\b\w", match => match.Value.ToUpper());
+                }
 
-            Console.WriteLine(finalStr.Trim());
+
+                foreach (string word in words)
+                {
+                    finalStr += word + " ";
+                }
+
+                Console.WriteLine(finalStr.Trim());
+            }
+                
             return finalStr;
 
         }
@@ -97,10 +99,12 @@ namespace Traning_exes_console.PrimitiveTypes
         /// </summary>
         public static string Method5(string str)
         {
+            if (BaseMethod(str))
+            {
+                string[] words = Regex.Split(str, spaceRegex);
 
-            string[] words = Regex.Split(str, spaceRegex);
-
-            Console.WriteLine($"có {words.Count() - 1} ký tự space");
+                Console.WriteLine($"có {words.Count() - 1} ký tự space");
+            }
 
             return str;
 
@@ -111,8 +115,11 @@ namespace Traning_exes_console.PrimitiveTypes
         /// </summary>
         public static string Method6(string str)
         {
-            string strWithOutSpace = Regex.Replace(str, spaceRegex, "");
-            Console.WriteLine($"có {strWithOutSpace.Count()} ký tự không phải space");
+            if (BaseMethod(str))
+            {
+                string strWithOutSpace = Regex.Replace(str, spaceRegex, "");
+                Console.WriteLine($"có {strWithOutSpace.Count()} ký tự không phải space");
+            }
 
             return str;
 
@@ -161,8 +168,12 @@ namespace Traning_exes_console.PrimitiveTypes
         /// </summary>
         public static string Method9(string input1)
         {
-            input1 = input1.Replace("ABC", "DEF");
-            Console.WriteLine(input1);
+            if (BaseMethod(input1))
+            {
+
+                input1 = input1.Replace("ABC", "DEF");
+                Console.WriteLine(input1);
+            }
 
             return input1;
         }
@@ -174,7 +185,7 @@ namespace Traning_exes_console.PrimitiveTypes
         /// </summary>
         public static string Method10(string input)
         {
-            Console.WriteLine($"Kính chào ông {input}, Chúc ngon miệng");
+            if (BaseMethod(input)) Console.WriteLine($"Kính chào ông {input}, Chúc ngon miệng");
 
             return input;
         }
@@ -184,9 +195,12 @@ namespace Traning_exes_console.PrimitiveTypes
         /// </summary>
         public static string Method11(string str)
         {
-            string reversed = new string(str.Reverse().ToArray());
-            Console.WriteLine(reversed);
-
+            string reversed = "";
+            if (BaseMethod(str))
+            {
+                reversed = new string(str.Reverse().ToArray());
+                Console.WriteLine(reversed);
+            }
             return reversed;
         }
 
@@ -304,27 +318,27 @@ namespace Traning_exes_console.PrimitiveTypes
             {
                 case 1:
                     //1.1
-                    BaseMethod(Helper.InputStr(), Method1);
+                    Method1(Helper.InputStr());
                     break;
                 case 2:
                     //1.2
-                    BaseMethod(Helper.InputStr(), Method2);
+                    Method2(Helper.InputStr());
                     break;
                 case 3:
                     //1.3
-                    BaseMethod(Helper.InputStr(), Method3);
+                    Method3(Helper.InputStr());
                     break;
                 case 4:
                     //1.4
-                    BaseMethod(Helper.InputStr(), Method4);
+                    Method4(Helper.InputStr());
                     break;
                 case 5:
                     //1.5
-                    BaseMethod(Helper.InputStr(), Method5);
+                    Method5(Helper.InputStr());
                     break;
                 case 6:
                     //1.6
-                    BaseMethod(Helper.InputStr(), Method6);
+                    Method6(Helper.InputStr());
                     break;
                 case 7:
                     inputs = Helper.Input2Str();
@@ -338,15 +352,15 @@ namespace Traning_exes_console.PrimitiveTypes
                     break;
                 case 9:
                     //1.1.9
-                    BaseMethod(Helper.InputStr(), Method9);
+                    Method9(Helper.InputStr());
                     break;
                 case 10:
                     //1.1.10
-                    BaseMethod(Helper.InputStr(), Method10);
+                    Method10(Helper.InputStr());
                     break;
                 case 11:
                     //1.1.11
-                    BaseMethod(Helper.InputStr(), Method11);
+                    Method11(Helper.InputStr());
                     break;
                 case 12:
                     //1.1.12
