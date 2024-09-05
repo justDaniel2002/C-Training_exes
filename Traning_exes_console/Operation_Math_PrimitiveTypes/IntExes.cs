@@ -90,7 +90,7 @@ namespace Traning_exes_console.PrimitiveTypes
             // Viết tn cho đơn giản
             if (!IsNumSmallerOrEqualZero(num))
             {
-                Console.WriteLine($"2 ^ {num}: {Math.Pow(2, num)}");
+                Console.WriteLine(string.Format("2 ^ {0}: {1}", num,  Math.Pow(2, num)));
             }
         }
 
@@ -101,7 +101,7 @@ namespace Traning_exes_console.PrimitiveTypes
         /// </summary>
         public static void Method4(int num1, int num2)
         {
-            Console.WriteLine($"kết quả của {num1} chia {num2} bằng {num1/num2} dư {num1%num2}");
+            Console.WriteLine(string.Format("kết quả của {0} chia {1} bằng {2} dư {3}", num1, num2, num1/num2, num1%num2));
         }
 
 

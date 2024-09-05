@@ -62,12 +62,12 @@ namespace Traning_exes_console.Condition
         public static void SecondLoop(DateTime dt, int looptime)
         {
             // bài này cần nhập cả số X để in trong X giây thôi mà
-            Console.WriteLine($"Ngày giờ hiện tại: {dt.ToString()}");
+            Console.WriteLine(string.Format("Ngày giờ hiện tại: {0}", dt.ToString()));
             while (looptime > 0)
             {
                 dt = dt.AddSeconds(1);
                 Thread.Sleep(1000);
-                Console.WriteLine($"Ngày giờ hiện tại: {dt.ToString()}");
+                Console.WriteLine(string.Format("Ngày giờ hiện tại: {0}", dt.ToString()));
                 looptime--;
             }
         }
@@ -80,14 +80,14 @@ namespace Traning_exes_console.Condition
             var nextMonth = DateTime.Now.AddMonths(1);
 
             DateTime dt = DateTime.Parse($"{nextMonth.Year}/{nextMonth.Month}/{day}");
-            Console.WriteLine($"10 ngày tiếp theo trong ngày {day} của tháng {nextMonth.Month}");
+            Console.WriteLine(string.Format("10 ngày tiếp theo trong ngày {0} của tháng {1}",day, nextMonth.Month));
 
             for (int i = 0; i < 10; i++)
             {
                 var nextDay = dt.AddDays(i + 1);
                 if (nextDay.Month != nextMonth.Month)
                 {
-                    Console.WriteLine($"Hết tháng {nextMonth.Month}");
+                    Console.WriteLine(string.Format("Hết tháng {0}", nextMonth.Month));
                     break;
                 }
 
@@ -120,7 +120,7 @@ namespace Traning_exes_console.Condition
                 if (hadLoop >= 100) break;
                 dt = dt.AddDays(i);
                 if (dt.DayOfWeek == DayOfWeek.Sunday) continue;
-                Console.WriteLine($"{Helper.vietnameseWeekdays[dt.DayOfWeek]}, ngày {dt.Day} tháng {dt.Month} năm {dt.Year}");
+                Console.WriteLine(string.Format("{0}, ngày {1} tháng {2} năm {3}", Helper.vietnameseWeekdays[dt.DayOfWeek], dt.Day, dt.Month, dt.Year));
                 hadLoop++;
                 Thread.Sleep(500);
             }

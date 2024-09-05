@@ -83,7 +83,7 @@ namespace Traning_exes_console
             string vietnameseDayOfWeek = vietnameseWeekdays[date.DayOfWeek];
 
             // Format the date as "DayOfWeek, Day Month Year"
-            string formattedDate = $"{vietnameseDayOfWeek}, ngày {date.Day} tháng {date.Month} năm {date.Year}";
+            string formattedDate = string.Format("{0}, ngày {1} tháng {2} năm {3}",vietnameseDayOfWeek,date.Day, date.Month, date.Year);
 
             return formattedDate;
         }
@@ -158,9 +158,9 @@ namespace Traning_exes_console
             int day = InputInt("Nhập vào 1 ngày trong tháng tiếp");
             if (!IsDayInMonth(nextMonth, day))
             {
-                Console.WriteLine($"Tháng tiếp không có ngày {day}");
+                Console.WriteLine(string.Format("Tháng tiếp không có ngày {0}", day));
                 //return InputDayInNextMonth(nextMonth);
-                throw new Exception($"Tháng tiếp không có ngày {day}");
+                throw new Exception(string.Format("Tháng tiếp không có ngày {0}", day));
             }
             return day;
         }

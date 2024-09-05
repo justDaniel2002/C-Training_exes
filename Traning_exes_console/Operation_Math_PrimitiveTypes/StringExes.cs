@@ -103,7 +103,7 @@ namespace Traning_exes_console.PrimitiveTypes
             {
                 string[] words = Regex.Split(str, spaceRegex);
 
-                Console.WriteLine($"có {words.Count() - 1} ký tự space");
+                Console.WriteLine(string.Format("có {0} ký tự space", words.Count() - 1));
             }
 
             return str;
@@ -118,7 +118,7 @@ namespace Traning_exes_console.PrimitiveTypes
             if (BaseMethod(str))
             {
                 string strWithOutSpace = Regex.Replace(str, spaceRegex, "");
-                Console.WriteLine($"có {strWithOutSpace.Count()} ký tự không phải space");
+                Console.WriteLine(string.Format("có {0} ký tự không phải space"), strWithOutSpace.Count());
             }
 
             return str;
@@ -136,11 +136,11 @@ namespace Traning_exes_console.PrimitiveTypes
             //string.Equals
             if (string.Equals(input1, input2, StringComparison.Ordinal))
             {
-                Console.WriteLine($"Chuỗi {input1} giống chuỗi {input2}");
+                Console.WriteLine(string.Format("Chuỗi {0} giống chuỗi {1}", input1, input2));
             }
             else
             {
-                Console.WriteLine($"Chuỗi {input1} khác chuỗi {input2}");
+                Console.WriteLine(string.Format("Chuỗi {0} khác chuỗi {1}", input1, input2));
             }
         }
 
@@ -155,11 +155,11 @@ namespace Traning_exes_console.PrimitiveTypes
             //string.Equals
             if (string.Equals(input1, input2, StringComparison.OrdinalIgnoreCase))
             {
-                Console.WriteLine($"Chuỗi {input1} giống chuỗi {input2}");
+                Console.WriteLine(string.Format("Chuỗi {0} giống chuỗi {1}", input1, input2));
             }
             else
             {
-                Console.WriteLine($"Chuỗi {input1} khác chuỗi {input2}");
+                Console.WriteLine(string.Format("Chuỗi {0} khác chuỗi {1}", input1, input2));
             }
         }
 
@@ -185,7 +185,7 @@ namespace Traning_exes_console.PrimitiveTypes
         /// </summary>
         public static string Method10(string input)
         {
-            if (BaseMethod(input)) Console.WriteLine($"Kính chào ông {input}, Chúc ngon miệng");
+            if (BaseMethod(input)) Console.WriteLine(string.Format("Kính chào ông {0}, Chúc ngon miệng", input));
 
             return input;
         }
